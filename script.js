@@ -83,22 +83,23 @@ document.querySelectorAll('.project-card').forEach(card => {
     if (id) showProjectModal(id);
   });
 });
-
-// ====================== CONTACT FORM - GOOGLE SHEETS ======================
+// =========================cnt
 const contactForm = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
 
 contactForm.addEventListener('submit', function() {
-  // Success message show karo
   successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
   successMessage.style.display = 'block';
 
-  // Form reset + message hide
   setTimeout(() => {
     contactForm.reset();
     successMessage.style.display = 'none';
   }, 5000);
 });
+
+
+
+
 
 
 // =================LAST EDITED HERO.
