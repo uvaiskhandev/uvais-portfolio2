@@ -85,42 +85,20 @@ document.querySelectorAll('.project-card').forEach(card => {
 });
 // =========================cnt
 // ====================== CONTACT FORM - GOOGLE SHEETS (Fixed) ======================
+// ====================== CONTACT FORM - GOOGLE SHEETS (Simple & Reliable) ======================
 const contactForm = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
 
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLS1ML53Y5vF_fy4UFSvO7Q9bzO_NdN9ON6x8rRv0gjgqfk/formResponse";
+contactForm.addEventListener('submit', function() {
+  // Success message turant dikhao
+  successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
+  successMessage.style.display = 'block';
 
-contactForm.addEventListener('submit', async function(e) {
-  e.preventDefault();   // Redirect rokne ke liye
-
-  const formData = new FormData();
-  formData.append("entry.1984456640", document.getElementById("name").value);
-  formData.append("entry.849046089", document.getElementById("email").value);
-  formData.append("entry.39425027", document.getElementById("message").value);
-
-  try {
-    // Background mein submit (no redirect)
-    await fetch(GOOGLE_FORM_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: formData
-    });
-
-    // Success Message
-    successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
-    successMessage.style.display = 'block';
-
+  // Form reset after 4 seconds
+  setTimeout(() => {
     contactForm.reset();
-
-    setTimeout(() => {
-      successMessage.style.display = 'none';
-    }, 5000);
-
-  } catch (error) {
-    successMessage.textContent = "❌ Something went wrong. Please try again.";
-    successMessage.style.display = 'block';
-    successMessage.style.color = "#ef4444";
-  }
+    successMessage.style.display = 'none';
+  }, 4000);
 });
 
 
