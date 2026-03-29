@@ -264,7 +264,7 @@
         </div>
         <h3>SaaS & Admin Dashboards</h3>
         <p>Powerful and beautiful dashboards for SaaS products with real-time data and analytics.</p>
-        <ul class="service-features">
+        <ul class="service-features">0
           <li>Real-time Charts & Graphs</li>
           <li>User Role & Permission System</li>
           <li>Dark/Light Mode Support</li>
@@ -298,20 +298,24 @@
     <h2 class="section-title">Get In Touch</h2>
     <p class="section-subtitle">Have a project in mind? Let's discuss it.</p>
     
-    <form id="contact-form" class="contact-form">
+    <form id="contact-form" class="contact-form" 
+          action="https://docs.google.com/forms/d/e/1FAIpQLS1ML53Y5vF_fy4UFSvO7Q9bzO_NdN9ON6x8rRv0gjgqfk/formResponse" 
+          method="POST" 
+          target="_self">   <!-- target="_self" important -->
+
       <div class="form-group">
         <label for="name">Your Name</label>
-        <input type="text" id="name" placeholder="John Doe" required>
+        <input type="text" id="name" name="entry.1984456640" placeholder="John Doe" required>
       </div>
       
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="you@example.com" required>
+        <input type="email" id="email" name="entry.849046089" placeholder="you@example.com" required>
       </div>
       
       <div class="form-group">
         <label for="message">Your Message</label>
-        <textarea id="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+        <textarea id="message" name="entry.39425027" rows="6" placeholder="Tell me about your project..." required></textarea>
       </div>
       
       <button type="submit" class="btn primary-btn submit-btn">Send Message</button>
@@ -320,7 +324,6 @@
     <div id="success-message" class="success-msg"></div>
   </div>
 </section>
-
   <!-- Modal -->
   <div id="project-modal" class="modal">
     <div class="modal-content">
