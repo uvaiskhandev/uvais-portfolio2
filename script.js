@@ -84,17 +84,43 @@ document.querySelectorAll('.project-card').forEach(card => {
   });
 });
 // =========================cnt
+// ====================== CONTACT FORM - GOOGLE SHEETS (Fixed) ======================
 const contactForm = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
 
-contactForm.addEventListener('submit', function() {
-  successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
-  successMessage.style.display = 'block';
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLS1ML53Y5vF_fy4UFSvO7Q9bzO_NdN9ON6x8rRv0gjgqfk/formResponse";
 
-  setTimeout(() => {
+contactForm.addEventListener('submit', async function(e) {
+  e.preventDefault();   // Redirect rokne ke liye
+
+  const formData = new FormData();
+  formData.append("entry.1984456640", document.getElementById("name").value);
+  formData.append("entry.849046089", document.getElementById("email").value);
+  formData.append("entry.39425027", document.getElementById("message").value);
+
+  try {
+    // Background mein submit (no redirect)
+    await fetch(GOOGLE_FORM_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    });
+
+    // Success Message
+    successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
+    successMessage.style.display = 'block';
+
     contactForm.reset();
-    successMessage.style.display = 'none';
-  }, 5000);
+
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 5000);
+
+  } catch (error) {
+    successMessage.textContent = "❌ Something went wrong. Please try again.";
+    successMessage.style.display = 'block';
+    successMessage.style.color = "#ef4444";
+  }
 });
 
 
