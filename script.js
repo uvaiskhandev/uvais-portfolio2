@@ -84,19 +84,18 @@ document.querySelectorAll('.project-card').forEach(card => {
   });
 });
 
-// ====================== CONTACT FORM ======================
+// ====================== CONTACT FORM - GOOGLE SHEETS ======================
 const contactForm = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
+contactForm.addEventListener('submit', function() {
+  // Success message show karo
   successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
   successMessage.style.display = 'block';
 
-  contactForm.reset();
-
+  // Form reset + message hide
   setTimeout(() => {
+    contactForm.reset();
     successMessage.style.display = 'none';
   }, 5000);
 });
