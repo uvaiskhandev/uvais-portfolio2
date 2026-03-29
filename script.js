@@ -86,21 +86,19 @@ document.querySelectorAll('.project-card').forEach(card => {
 // =========================cnt
 // ====================== CONTACT FORM - GOOGLE SHEETS (Fixed) ======================
 // ====================== CONTACT FORM - GOOGLE SHEETS (Simple & Reliable) ======================
+// Google Form Submission
 const contactForm = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
 
 contactForm.addEventListener('submit', function() {
-  // Success message turant dikhao
   successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
   successMessage.style.display = 'block';
 
-  // Form reset after 4 seconds
   setTimeout(() => {
     contactForm.reset();
     successMessage.style.display = 'none';
-  }, 4000);
+  }, 4500);
 });
-
 
 
 
