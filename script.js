@@ -85,20 +85,61 @@ document.querySelectorAll('.project-card').forEach(card => {
 });
 // =========================cnt
 // ====================== CONTACT FORM - GOOGLE SHEETS (Fixed) ======================
-// ====================== CONTACT FORM - GOOGLE SHEETS (Simple & Reliable) ======================
-// Google Form Submission
+// ====================== DEBUG VERSION - CONTACT FORM ======================
 const contactForm = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
+const submitBtn = document.getElementById('submit-btn');
 
-contactForm.addEventListener('submit', function() {
-  successMessage.textContent = "✅ Message sent successfully! I'll get back to you soon.";
-  successMessage.style.display = 'block';
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxxfuaH8H2pyv_-xZdEe-M4reUSUjSxdSrvSofvR3JZXMpPb-aFA5jhhqoHOJZd9IP6/exec";
 
-  setTimeout(() => {
-    contactForm.reset();
-    successMessage.style.display = 'none';
-  }, 4500);
+contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Loading state
+    if (submitBtn) submitBtn.disabled = true;
+
+    console.log("Sending data:", { name, email, message }); // Debugging ke liye
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
+
+    try {
+        const response = await fetch(WEB_APP_URL, {
+            method: "POST",
+            body: formData
+        });
+
+        console.log("Response received"); // Debugging
+
+        successMessage.style.background = "rgba(16, 185, 129, 0.15)";
+        successMessage.style.color = "#10b981";
+        successMessage.textContent = "✅ Thank you! Message sent successfully.";
+        successMessage.style.display = 'block';
+
+        contactForm.reset();
+
+    } catch (error) {
+        console.error("Error occurred:", error);
+        successMessage.style.background = "rgba(239, 68, 68, 0.15)";
+        successMessage.style.color = "#ef4444";
+        successMessage.textContent = "❌ Failed to send. Please try again.";
+        successMessage.style.display = 'block';
+    } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 5000);
+    }
 });
+
+
 
 
 
