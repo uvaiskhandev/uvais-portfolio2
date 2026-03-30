@@ -375,25 +375,30 @@ h1, h2, h3 {
 }
 
 /* ====================== CONTACT FORM ====================== */
-.submit-btn{
-  border: 2px solid var(--text-light);
-  border-radius: 10%;
-}
-
-.contact-form {
+/* ====================== PROFESSIONAL CONTACT FORM ====================== */
+.contact-wrapper {
   max-width: 700px;
   margin: 0 auto;
 }
 
+.contact-form {
+  background: var(--card-bg);
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
 .form-group {
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 600;
   color: var(--text);
+  font-size: 1.05rem;
 }
 
 .form-group input,
@@ -402,9 +407,9 @@ h1, h2, h3 {
   padding: 16px 20px;
   border: 2px solid var(--border);
   border-radius: 12px;
-  background: var(--card-bg);
+  background: var(--bg);
   color: var(--text);
-  font-size: 1rem;
+  font-size: 1.05rem;
   transition: all 0.3s ease;
 }
 
@@ -414,6 +419,34 @@ h1, h2, h3 {
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Success Message */
+.success-msg {
+  margin-top: 1.5rem;
+  padding: 18px 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  display: none;
+}
+
+
 
 /* ====================== FOOTER ====================== */
 .footer {
@@ -980,4 +1013,150 @@ footer {
   left: 0;
   color: var(--primary);
   font-weight: bold;
+}
+
+
+
+/* ====================== PROFESSIONAL RESUME BUTTON ====================== */
+.resume-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.resume-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+  background: linear-gradient(135deg, #4338ca, #4f46e5);
+}
+
+.resume-btn:active {
+  transform: translateY(-2px);
+}
+
+.resume-btn i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.resume-btn:hover i {
+  transform: translateY(2px);
+}
+
+/* Optional shine effect */
+.resume-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.resume-btn:hover::after {
+  left: 200%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .resume-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}
+
+
+
+/* ====================== TESTIMONIALS SECTION ====================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.4s ease;
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary);
+}
+
+.testimonial-content {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.testimonial-content::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary);
+  opacity: 0.15;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.author-info h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.author-info p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
 }
